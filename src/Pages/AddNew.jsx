@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const API_URL = "http://localhost:8080/article";
-const DRAFT_URL = "http://localhost:8080/draft";
 
 export const AddNew = () => {
   const [title, setTitle] = useState("");
@@ -25,10 +24,8 @@ export const AddNew = () => {
     setErrorMessage("");
     setSuccessMessage("");
 
-    const url = status === "publish" ? API_URL : DRAFT_URL;
-
     try {
-      const response = await axios.post(url, {
+      const response = await axios.post(API_URL, {
         title,
         content,
         category,
