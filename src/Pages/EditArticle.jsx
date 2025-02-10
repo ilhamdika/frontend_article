@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -13,7 +13,12 @@ export const EditArticle = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
 
+  const isMounted = useRef(false);
+
   const fetchArticle = async () => {
+    if (isMounted.current) return;
+    isMounted.current = true;
+
     setLoading(true);
     setError(null);
     try {
