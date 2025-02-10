@@ -52,7 +52,7 @@ const Preview = () => {
       {displayedArticles.length > 0 ? (
         displayedArticles.map((article) => (
           <div key={article.ID} className="border-b pb-4 mb-4 w-full max-w-xl hover:bg-gray-100">
-            <Link to={`/detail/${article.ID}`} key={article.ID} className="border-b pb-4 mb-4 w-full max-w-xl">
+            <Link to={`/detail-article/${article.ID}`} key={article.ID} className="border-b pb-4 mb-4 w-full max-w-xl">
               <h3 className="text-xl font-semibold">{article.Title.length > 50 ? `${article.Title.slice(0, 50)}...` : article.Title}</h3>
               <p className="text-sm text-gray-500">{article.Category}</p>
               <p className="mt-2 text-gray-700 dark:text-gray-300 text-justify">{article.Content.length > 100 ? `${article.Content.slice(0, 100)}...` : article.Content}</p>
