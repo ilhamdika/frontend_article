@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export const AddNew = () => {
+export const EditArticle = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [category, setCategory] = useState("");
@@ -54,4 +54,4 @@ export const AddNew = () => {
   );
 };
 
-export default AddNew;
+export default EditArticle;
