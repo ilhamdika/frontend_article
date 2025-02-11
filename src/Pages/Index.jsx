@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/articles";
+const API_URL = import.meta.env.VITE_API_URL + "articles";
 const LIMIT = 10;
 
 export const AllPosts = () => {
@@ -37,11 +37,11 @@ export const AllPosts = () => {
   };
 
   const updatePostStatus = async (id, status) => {
-    const confirmMessage = status === "draft" ? "Apakah yakin ingin memindahkan post ini ke draft?" : "Apakah yakin ingin mengembalikan post ini?";
+    const confirmMessage = status === "thrash" ? "Apakah yakin ingin memindahkan post ini ke thrash?" : "Apakah yakin ingin mengembalikan post ini?";
     if (window.confirm(confirmMessage)) {
       try {
         await axios.put(`http://localhost:8080/article-status/${id}`, { status });
-        alert(status === "draft" ? "Post moved to draft successfully." : "Post restored successfully.");
+        alert(status === "thrash" ? "Post moved to thrash successfully." : "Post restored successfully.");
         fetchPosts();
       } catch (err) {
         setError("Failed to update post status.");
@@ -93,12 +93,12 @@ export const AllPosts = () => {
                         <FiEdit size={20} />
                       </Link>
                       {activeTab === "publish" && (
-                        <button className="text-red-500" onClick={() => updatePostStatus(post.ID, "draft")}>
+                        <button className="text-red-500" onClick={() => updatePostStatus(post.ID, "thrash")}>
                           <FiTrash2 size={20} />
                         </button>
                       )}
                       {activeTab === "thrash" && (
-                        <button className="text-green-500" onClick={() => updatePostStatus(post.ID, "draft")}>
+                        <button className="text-green-500" onClick={() => updatePostStatus(post.ID, "publish")}>
                           Restore
                         </button>
                       )}

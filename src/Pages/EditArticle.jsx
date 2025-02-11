@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/article";
+const API_URL = import.meta.env.VITE_API_URL + "article";
 
 export const EditArticle = () => {
   const { id } = useParams();

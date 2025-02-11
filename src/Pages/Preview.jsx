@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const API_URL = "http://localhost:8080/articles/100/0?status=publish";
+const API_URL = import.meta.env.VITE_API_URL + "articles/100/0?status=publish";
 const ITEMS_PER_PAGE = 10;
 
 const Preview = () => {
@@ -17,7 +17,6 @@ const Preview = () => {
     setError(null);
     try {
       const response = await axios.get(API_URL);
-      console.log("API Response:", response.data);
 
       setArticles(response.data);
       setTotalPages(Math.ceil(response.data.length / ITEMS_PER_PAGE));
