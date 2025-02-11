@@ -38,15 +38,15 @@ const DetailArticle = () => {
   }, [id]);
 
   return (
-    <div className="p-6 w-full max-w-3xl mx-auto min-h-screen">
+    <div className="p-6 w-full max-w-3xl min-h-screen">
       {loading && <p className="text-gray-500 text-center">Loading...</p>}
       {error && <p className="text-red-500 text-center">{error}</p>}
       {article && (
         <>
-          <h2 className="text-3xl font-bold mb-4">{article.Title}</h2>
-          <p className="text-sm text-gray-500 mb-2">{article.Category}</p>
+          <h2 className="text-3xl font-bold mb-4 break-words">{article.Title}</h2>
+          <p className="text-sm text-gray-500 mb-2 break-words">{article.Category}</p>
           <hr className="mb-4" />
-          <p className="text-gray-700 text-justify">{article.Content}</p>
+          <p className="text-gray-700 text-justify break-words whitespace-pre-wrap">{article.Content}</p>
         </>
       )}
     </div>
